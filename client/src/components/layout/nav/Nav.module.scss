@@ -1,0 +1,33 @@
+.nav {
+  // border-bottom: 1px solid #20323a;
+  background-color: #050b17;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+.logo {
+  color: gainsboro;
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.navLink {
+  border-bottom: 0.25rem solid transparent;
+  color: gainsboro !important;
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  font-weight: 600;
+  padding-bottom: 3px;
+
+  &:hover {
+    color: darkgoldenrod !important;
+    transition: 0.3s;
+  }
+
+  &.active {
+    color: goldenrod !important;
+    border-bottom-color: goldenrod;
+  }
+}
