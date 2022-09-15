@@ -12,7 +12,7 @@ const {
 } = constants;
 
 const Section = ({ children, subtitle, title }: any) => (
-  <section>
+  <section className="mb-4">
     <Fade>
       {title && (
         <h1 className="text-center">
