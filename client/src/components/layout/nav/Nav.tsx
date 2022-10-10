@@ -1,13 +1,15 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Container, Nav as BoostrapNav, Navbar } from "react-bootstrap";
 import { Slide } from "react-awesome-reveal";
-import constants from "../../../constants/constants";
+import { isEqual } from "lodash";
+import { LanguageSwitch } from "../../switch/LanguageSwitch";
+import { LanguageContext } from "../../../context/languageContext";
 import cn from "classnames";
 
 import styles from "./Nav.module.scss";
 
 const Nav: FC = () => {
-  const { NAV_MENU } = constants;
+  const { displayText } = useContext(LanguageContext);
 
   return (
     <Navbar
@@ -23,9 +25,16 @@ const Nav: FC = () => {
         </Slide>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <BoostrapNav className="ml-auto">
-            {NAV_MENU.map((option, idx) => (
-              <strong className={styles.navLink} key={idx}>
+          <BoostrapNav className="ml-auto align-items-center">
+            <LanguageSwitch className="mr-4" />
+            {displayText("nav.menu").map((option: string, idx: number) => (
+              <strong
+                className={cn(
+                  styles.navLink,
+                  !isEqual(idx, displayText("nav.menu").length) && "mr-2"
+                )}
+                key={idx}
+              >
                 {option}
               </strong>
             ))}

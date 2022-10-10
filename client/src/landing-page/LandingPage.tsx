@@ -1,15 +1,14 @@
-import { FC } from "react";
-import { Button } from "react-bootstrap";
+import { FC, useContext } from "react";
+import { Button, Col } from "react-bootstrap";
 import { Fade } from "react-awesome-reveal";
 import { ContactForm } from "../components/contact-form/ContactForm";
+import { LanguageContext } from "../context/languageContext";
 import Layout from "../components/layout/Layout";
 import constants from "../constants/constants";
 
 import styles from "./LandingPage.module.scss";
 
-const {
-  LANDING_PAGE: { BULLETS, SOCIALS },
-} = constants;
+const { SOCIALS } = constants;
 
 const Section = ({ children, subtitle, title }: any) => (
   <section className="mb-4">
@@ -27,30 +26,34 @@ const Section = ({ children, subtitle, title }: any) => (
 );
 
 const LandingPage: FC = () => {
+  const { displayText } = useContext(LanguageContext);
+
   return (
     <Layout>
       <Section>
         <h1 className="display-3 mb-4 mb-md-3">
-          Hola, me llamo Aldo Solano y hago páginas web.
+          {displayText("landingPage.welcome.header")}
         </h1>
         <div className="d-flex flex-column mb-4 mb-md-3">
-          {BULLETS.map((bullet, idx) => (
-            <span className="lead" key={idx}>
-              <i
-                className="far fa-arrow-alt-circle-right mr-2"
-                style={{ color: "goldenrod" }}
-              />
-              {bullet}
-            </span>
-          ))}
+          {displayText("landingPage.welcome.bullets").map(
+            (bullet: string, idx: number) => (
+              <span className="lead" key={idx}>
+                <i
+                  className="far fa-arrow-alt-circle-right mr-2"
+                  style={{ color: "goldenrod" }}
+                />
+                {bullet}
+              </span>
+            )
+          )}
         </div>
         <Button variant="light" className="shadow mt-1" size="lg">
-          Contáctame
+          {displayText("landingPage.welcome.button")}
         </Button>
       </Section>
       <Section
-        subtitle="A continuación están los vínculos a mis redes sociales."
-        title="Sociales"
+        subtitle={displayText("landingPage.socials.subtitle")}
+        title={displayText("landingPage.socials.header")}
       >
         <div className="d-flex flex-row justify-content-center text-white">
           {SOCIALS.map((item, idx) => (
@@ -68,12 +71,12 @@ const LandingPage: FC = () => {
         </div>
       </Section>
       <Section
-        subtitle="Describe brevemente tu proyecto y contáctame usando el siguiente formulario."
-        title="Contacto"
+        subtitle={displayText("landingPage.contact.subtitle")}
+        title={displayText("landingPage.contact.header")}
       >
-        <div className="text-center">
+        <Col md={{ offset: 3, span: 6 }}>
           <ContactForm />
-        </div>
+        </Col>
       </Section>
     </Layout>
   );
