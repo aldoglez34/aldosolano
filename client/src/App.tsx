@@ -23,12 +23,12 @@ const App: FC = () => {
           return get(spanishStrings, key, "");
       }
     },
-    [language, setLanguage]
+    [language]
   );
 
   const contextValue = useMemo(
     () => ({ displayText, language, setLanguage }),
-    [displayText, language]
+    [displayText, language, setLanguage]
   );
 
   return (
