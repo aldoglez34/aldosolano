@@ -13,14 +13,16 @@ const { SOCIALS } = constants;
 const Section = ({ children, subtitle, title }: any) => (
   <section className="mb-4">
     <Fade>
-      {title && (
-        <h1 className="text-center">
-          <span className="text-light">{title}</span>
-          <hr className={styles.subtitleDivider} />
-        </h1>
-      )}
-      {subtitle && <p className="lead text-center mb-4">{subtitle}</p>}
-      {children}
+      <>
+        {title && (
+          <h1 className="text-center">
+            <span className="text-light">{title}</span>
+            <hr className={styles.subtitleDivider} />
+          </h1>
+        )}
+        {subtitle && <p className="lead text-center mb-4">{subtitle}</p>}
+        {children}
+      </>
     </Fade>
   </section>
 );

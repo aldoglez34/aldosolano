@@ -4,7 +4,7 @@ export const spanishStrings = {
   },
   landingPage: {
     welcome: {
-      header: "Hola, me llamo Aldo Solano y hago páginas web.",
+      header: "Hola, me llamo Aldo y hago páginas web.",
       bullets: [
         "Páginas de publicidad.",
         "Tiendas en línea.",
@@ -39,7 +39,7 @@ export const englishStrings = {
   },
   landingPage: {
     welcome: {
-      header: "Hello, my name is Aldo Solano and I create websites.",
+      header: "Hello, my name is Aldo and I create websites.",
       bullets: ["Marketing websites.", "E-commerce.", "Web Apps."],
       button: "Contact",
     },
